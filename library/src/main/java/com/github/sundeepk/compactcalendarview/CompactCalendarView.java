@@ -1,6 +1,7 @@
 package com.github.sundeepk.compactcalendarview;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -96,7 +97,19 @@ public class CompactCalendarView extends View {
                 Color.argb(255, 100, 68, 65), new EventsContainer(Calendar.getInstance()),
                 Locale.getDefault(), TimeZone.getDefault());
         gestureDetector = new GestureDetectorCompat(getContext(), gestureListener);
-        animationHandler = new AnimationHandler(compactCalendarController, this);
+
+        if (attrs != null) {
+            TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CompactCalendarView, 0, 0);
+            try {
+                animationHandler = new AnimationHandler(
+                        compactCalendarController, this,
+                        typedArray.getInt(R.styleable.CompactCalendarView_compactCalendarHeightAnimDuration, 650),
+                        typedArray.getInt(R.styleable.CompactCalendarView_compactCalendarHeightAnimDuration, 650)
+                );
+            } finally {
+                typedArray.recycle();
+            }
+        }
     }
 
     public void setAnimationListener(CompactCalendarAnimationListener compactCalendarAnimationListener){
