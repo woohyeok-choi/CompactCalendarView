@@ -97,19 +97,24 @@ public class CompactCalendarView extends View {
                 Color.argb(255, 100, 68, 65), new EventsContainer(Calendar.getInstance()),
                 Locale.getDefault(), TimeZone.getDefault());
         gestureDetector = new GestureDetectorCompat(getContext(), gestureListener);
+        int defHeightAnimDuration = 650;
+        int defIndicatorAnimDuration = 650;
 
         if (attrs != null) {
             TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CompactCalendarView, 0, 0);
             try {
-                animationHandler = new AnimationHandler(
-                        compactCalendarController, this,
-                        typedArray.getInt(R.styleable.CompactCalendarView_compactCalendarHeightAnimDuration, 650),
-                        typedArray.getInt(R.styleable.CompactCalendarView_compactCalendarHeightAnimDuration, 650)
-                );
+                defHeightAnimDuration = typedArray.getInt(R.styleable.CompactCalendarView_compactCalendarHeightAnimDuration, 650);
+                defIndicatorAnimDuration = typedArray.getInt(R.styleable.CompactCalendarView_compactCalendarIndicatorAnimDuration, 650);
             } finally {
                 typedArray.recycle();
             }
         }
+
+        animationHandler = new AnimationHandler(
+                compactCalendarController, this,
+                defHeightAnimDuration,
+                defIndicatorAnimDuration
+        );
     }
 
     public void setAnimationListener(CompactCalendarAnimationListener compactCalendarAnimationListener){
