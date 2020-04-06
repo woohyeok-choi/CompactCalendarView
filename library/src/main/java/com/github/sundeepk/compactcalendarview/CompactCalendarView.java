@@ -188,6 +188,10 @@ public class CompactCalendarView extends View {
         invalidate();
     }
 
+    public Date getCurrentDate() {
+        return compactCalendarController.getCurrentDate();
+    }
+
     public int getWeekNumberForCurrentMonth(){
         return compactCalendarController.getWeekNumberForCurrentMonth();
     }

@@ -359,7 +359,7 @@ class CompactCalendarController {
         accumulatedScrollOffset.x = monthsScrolledSoFar * width;
         if(shouldSelectFirstDayOfMonthOnScroll){
             setCalenderToFirstDayOfMonth(calendarWithFirstDayOfMonth, currentCalender.getTime(), 0, 1);
-            //setCurrentDate(calendarWithFirstDayOfMonth.getTime());
+            setCurrentDate(calendarWithFirstDayOfMonth.getTime());
         }
         performMonthScrollCallback();
     }
@@ -369,7 +369,7 @@ class CompactCalendarController {
         accumulatedScrollOffset.x = monthsScrolledSoFar * width;
         if(shouldSelectFirstDayOfMonthOnScroll){
             setCalenderToFirstDayOfMonth(calendarWithFirstDayOfMonth, currentCalender.getTime(), 0, -1);
-            //setCurrentDate(calendarWithFirstDayOfMonth.getTime());
+            setCurrentDate(calendarWithFirstDayOfMonth.getTime());
         }
         performMonthScrollCallback();
     }
@@ -651,6 +651,10 @@ class CompactCalendarController {
         currentCalender.setTime(currentDate);
         todayCalender = Calendar.getInstance(timeZone, locale);
         setToMidnight(currentCalender);
+    }
+
+    Date getCurrentDate() {
+        return currentDate;
     }
 
     private void setToMidnight(Calendar calendar) {
