@@ -359,7 +359,7 @@ class CompactCalendarController {
         accumulatedScrollOffset.x = monthsScrolledSoFar * width;
         if(shouldSelectFirstDayOfMonthOnScroll){
             setCalenderToFirstDayOfMonth(calendarWithFirstDayOfMonth, currentCalender.getTime(), 0, 1);
-            setCurrentDate(calendarWithFirstDayOfMonth.getTime());
+            //setCurrentDate(calendarWithFirstDayOfMonth.getTime());
         }
         performMonthScrollCallback();
     }
@@ -369,7 +369,7 @@ class CompactCalendarController {
         accumulatedScrollOffset.x = monthsScrolledSoFar * width;
         if(shouldSelectFirstDayOfMonthOnScroll){
             setCalenderToFirstDayOfMonth(calendarWithFirstDayOfMonth, currentCalender.getTime(), 0, -1);
-            setCurrentDate(calendarWithFirstDayOfMonth.getTime());
+            //setCurrentDate(calendarWithFirstDayOfMonth.getTime());
         }
         performMonthScrollCallback();
     }
